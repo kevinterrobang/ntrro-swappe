@@ -10,11 +10,11 @@
 'use strict';
 
 var _ = require('lodash');
-var Thing = require('./article.model');
+var Article = require('./article.model');
 
 // Get list of articles
 exports.index = function(req, res) {
-  Thing.find(function (err, articles) {
+  Article.find(function (err, articles) {
     if(err) { return handleError(res, err); }
     return res.json(200, articles);
   });
@@ -22,7 +22,7 @@ exports.index = function(req, res) {
 
 // Get a single article
 exports.show = function(req, res) {
-  Thing.findById(req.params.id, function (err, article) {
+  Article.findById(req.params.id, function (err, article) {
     if(err) { return handleError(res, err); }
     if(!article) { return res.send(404); }
     return res.json(article);
@@ -31,7 +31,7 @@ exports.show = function(req, res) {
 
 // Creates a new article in the DB.
 exports.create = function(req, res) {
-  Thing.create(req.body, function(err, article) {
+  Article.create(req.body, function(err, article) {
     if(err) { return handleError(res, err); }
     return res.json(201, article);
   });
@@ -40,7 +40,7 @@ exports.create = function(req, res) {
 // Updates an existing article in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  Thing.findById(req.params.id, function (err, article) {
+  Article.findById(req.params.id, function (err, article) {
     if (err) { return handleError(res, err); }
     if(!article) { return res.send(404); }
     var updated = _.merge(article, req.body);
@@ -53,7 +53,7 @@ exports.update = function(req, res) {
 
 // Deletes a article from the DB.
 exports.destroy = function(req, res) {
-  Thing.findById(req.params.id, function (err, article) {
+  Article.findById(req.params.id, function (err, article) {
     if(err) { return handleError(res, err); }
     if(!article) { return res.send(404); }
     article.remove(function(err) {

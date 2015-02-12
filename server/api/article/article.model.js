@@ -6,7 +6,11 @@ var mongoose = require('mongoose'),
 var ArticleSchema = new Schema({
   name: String,
   info: String,
-  active: Boolean
+  active: Boolean,
+  gallery: [Schema.Types.ObjectId],
+  tags: [Schema.Types.ObjectId],
+  owner: Schema.Types.ObjectId,
+  added: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Article', ArticleSchema);
