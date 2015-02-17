@@ -5,6 +5,9 @@ angular.module('swapApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },{
+      'title': 'My Clothes',
+      'link': '/myitems'
     }];
 
     $scope.isCollapsed = true;
