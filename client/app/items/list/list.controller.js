@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('swapApp')
-  .controller('ItemsCtrl', function ($scope, $http) {
-    $scope.myArticles = [];
+  .controller('ItemsCtrl', function ($scope, $http, Auth) {
+    $scope.articles = [];
 
-    $http.get('/api/articles').success(function(myArticles) {
-      $scope.myArticles = myArticles;
+    $http.get('/api/articles').success(function(articles) {
+      $scope.articles = articles;
+      /*$scope.articles = [{title:'Title One',},{title:'Title Two'}];*/
     });
 
     this.ownsArticle = function(article){
-      return article.owner._id.equals($scope.getCurrentUser._id);
+      return article.owner._id.equals(Auth.getCurrentUser._id);
     };
 /*
     $scope.addArticle = function() {

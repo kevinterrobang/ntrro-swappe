@@ -7,12 +7,12 @@
 	</a>
 
 	<ul>
-		<li ng-show="myArticles.length == 0">
+		<li ng-show="articles.length == 0">
 			No Articles. Click the add button above to get started with Swappe!
 		</li>
-		<li ng-repeat="(id, article) in myArticles">
-			<a ui-sref="items.detail({ articleId: article.id })">{{ article.title }}</a>
-			<a ui-sref="items.detail.edit({ articleId: article.id })"
+		<li ng-repeat="article in articles">
+			<a ui-sref="items.detail({ articleId: article._id })">{{ article.title }}</a>
+			<a ui-sref="items.detail.edit({ articleId: article._id })"
 				ng-show="ownsArticle(article)"
 				class="btn btn-default">
 				Edit

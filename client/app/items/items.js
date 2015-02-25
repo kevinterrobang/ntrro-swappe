@@ -6,12 +6,12 @@ angular.module('swapApp')
       .state('items', {
         url: '/items',
         templateUrl: 'app/items/list/list.html',
-        controller: 'ItemsCtrl'
+        controller: 'ItemsCtrl',
       })
       .state('items.user', {
         url: '/user/:userId',
-        templateUrl: 'app/items/view/view.html',
-        controller: 'ItemsCtrl'
+        templateUrl: 'app/items/list/list.html',
+        controller: 'ItemsCtrl',
       })
       .state('items.detail', {
         url: '/:articleId',
