@@ -1,0 +1,24 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<a ui-sref="items.add" class="btn btn-default">
+		<i class="glyphicon glyphicon-plus"></i>
+		Add Item
+	</a>
+
+	<ul>
+		<li ng-show="myArticles.length == 0">
+			No Articles. Click the add button above to get started with Swappe!
+		</li>
+		<li ng-repeat="(id, article) in myArticles">
+			<a ui-sref="items.detail({ articleId: article.id })">{{ article.title }}</a>
+			<a ui-sref="items.detail.edit({ articleId: article.id })"
+				ng-show="ownsArticle(article)"
+				class="btn btn-default">
+				Edit
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>

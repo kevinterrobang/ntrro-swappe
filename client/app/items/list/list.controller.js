@@ -1,14 +1,17 @@
 'use strict';
 
 angular.module('swapApp')
-  .controller('MyItemsCtrl', function ($scope, $http, socket) {
+  .controller('ItemsCtrl', function ($scope, $http) {
     $scope.myArticles = [];
 
     $http.get('/api/articles').success(function(myArticles) {
       $scope.myArticles = myArticles;
-      socket.syncUpdates('article', $scope.myArticles);
     });
 
+    this.ownsArticle = function(article){
+      return article.owner._id.equals($scope.getCurrentUser._id);
+    };
+/*
     $scope.addArticle = function() {
       if($scope.newArticle === '') {
         return;
@@ -24,4 +27,5 @@ angular.module('swapApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('article');
     });
+*/
   });

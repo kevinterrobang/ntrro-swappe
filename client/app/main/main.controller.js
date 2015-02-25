@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('swapApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, Auth) {
+
+    $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.isAdmin = Auth.isAdmin;
+    $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {

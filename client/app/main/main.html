@@ -14,8 +14,12 @@
     <input placeholder="Search for clothes in your network">
   </form>
 
-  <ul id="homenav">
-    <li><a href="/myitems" class="btn btn-default">My Clothes</a></li>
+  <ul id="homenav" ng-show="isLoggedIn()">
+    <li>
+      <a ui-sref="items.user({ userId: $scope.getCurrentUser._id.toString() })" class="btn btn-default">
+        My Clothes
+      </a>
+    </li>
   </ul>
 
 <!--
