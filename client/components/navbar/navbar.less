@@ -1,9 +1,7 @@
-ul.nav li>a {
-	text-align: center;
-}
 ul.nav li.greeting{
 	display: none;
 }
+
 @media (min-width: @screen-sm-min) {
 	ul.nav li.greeting{
 		display: block;
@@ -11,5 +9,17 @@ ul.nav li.greeting{
 
 	ul.nav li.mobile-settings{
 		display: none;
+	}
+}
+@media (max-width: @screen-sm-min) {
+	
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		width: auto;
+		margin-right: 0;
+		float: right;
+	}
+
+	ul.nav li>a {
+		text-align: left;
 	}
 }
