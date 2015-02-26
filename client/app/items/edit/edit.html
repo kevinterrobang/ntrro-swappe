@@ -4,7 +4,7 @@
 	<p class="alert alert-info" ng-show="showLoading">{{ loadingText }}</p>
 
 	<h1 ng-show="article.name">{{ article.name }}</h1>
-	<h1 ng-hide="article.name && !article._id">New Article!</h1>
+	<h1 ng-show="!article.name && !article._id">New Article!</h1>
 	<h1 ng-show="!article.name && article._id">Editing...</h1>
 
 	<form class="edit-article-form" novalidate>

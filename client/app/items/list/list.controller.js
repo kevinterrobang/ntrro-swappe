@@ -19,6 +19,7 @@ angular.module('swapApp')
     }
 
     $http.get('/api/articles?uid='+$scope.user).success(function(articles) {
+      console.log('articles found: ' + articles.length);
       $scope.articles = articles;
     });
 

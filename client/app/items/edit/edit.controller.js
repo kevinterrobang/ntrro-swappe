@@ -65,5 +65,8 @@ angular.module('swapApp')
 			$timeout(function(){
 				$scope.showSuccess = false;
 			}, 2000);
+			$scope.buttonText = 'Edit';
+			console.log('received article ID: ' + article._id.toString());
+			console.log('   scope article ID: ' + $scope.article._id.toString());
 		};
 	});

@@ -11,8 +11,8 @@
 			No Articles. Click the add button above to get started with Swappe!
 		</li>
 		<li ng-repeat="article in articles">
-			<a ui-sref="itemdetail({ articleId: article._id })">{{ article.title }}</a>
-			<a ui-sref="edititem({ articleId: article._id })"
+			<a ui-sref="itemdetail({ articleId: article._id.toString() })">{{ article.name }}</a>
+			<a ui-sref="edititem({ articleId: article._id.toString() })"
 				ng-show="ownsArticle(article)"
 				class="btn btn-default">
 				Edit
