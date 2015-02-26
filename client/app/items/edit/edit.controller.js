@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('swapApp')
-	.controller('EditItemCtrl', function ($scope, $http, $stateParams, socket) {
+	.controller('EditItemCtrl', function ($scope, $http, $stateParams, $timeout, socket) {
 		console.log('EditItemCtrl');
 		$scope.article = {};
 		$scope.buttonText = 'Add';
@@ -54,7 +54,7 @@ angular.module('swapApp')
 
 		$scope._error = function(data, status, headers, config){
 			$scope.showError = true;
-			setTimeout(function(){
+			$timeout(function(){
 				$scope.showError = false;
 			}, 4000);
 		};
@@ -62,7 +62,7 @@ angular.module('swapApp')
 		$scope._success = function(article){
 			$scope.article = article;
 			$scope.showSuccess = true;
-			setTimeout(function(){
+			$timeout(function(){
 				$scope.showSuccess = false;
 			}, 2000);
 		};
