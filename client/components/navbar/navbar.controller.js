@@ -12,6 +12,9 @@ angular.module('swapApp')
       'title': 'Home',
       'link': '/'
     },{
+      'title': 'Add Item',
+      'link' : '/items/add'
+    },{
       'title': 'My Clothes',
       'link': '/items/user/me',
     }];

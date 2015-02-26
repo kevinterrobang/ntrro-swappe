@@ -8,6 +8,11 @@ angular.module('swapApp')
         templateUrl: 'app/items/list/list.html',
         controller: 'ItemsCtrl',
       })
+      .state('additem', {
+        url: '/items/add',
+        templateUrl: 'app/items/edit/edit.html',
+        controller: 'EditItemCtrl'
+      })
       .state('useritems', {
         url: '/items/user/:userId',
         templateUrl: 'app/items/list/list.html',
@@ -20,11 +25,6 @@ angular.module('swapApp')
       })
       .state('edititem', {
         url: '/items/:articleId/edit',
-        templateUrl: 'app/items/edit/edit.html',
-        controller: 'EditItemCtrl'
-      })
-      .state('additem', {
-        url: '/items/add',
         templateUrl: 'app/items/edit/edit.html',
         controller: 'EditItemCtrl'
       });

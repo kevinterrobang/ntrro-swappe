@@ -4,4 +4,66 @@ angular.module('swapApp')
 	.controller('EditItemCtrl', function ($scope, $http, $stateParams, socket) {
 		console.log('EditItemCtrl');
 		$scope.article = {};
+		$scope.buttonText = 'Add';
+
+		$scope.loadingText = 'Loading...';
+		$scope.showLoading = true;
+
+		$scope.successText = 'Done!';
+		$scope.showSuccess = false;
+
+		$scope.postingText = 'Saving...';
+		$scope.showPosting = false;
+
+		$scope.showError = false;
+		$scope.errorText = 'Error! Not Saved!';
+
+		if($stateParams.articleId){
+			$http.get('/api/articles/' + $stateParams.articleId, function(article){
+				$scope.article = article;
+				$scope.buttonText = 'Edit';
+				$scope.showLoading = false;
+			});
+		}
+		else{
+			$scope.showLoading = false;
+		}
+
+		$scope.submitArticle = function(){
+			if(!$scope.article.name){
+				return;
+			}
+			$scope.showPosting = true;
+			if($scope.article._id){
+				$http.put('/api/articles/' + $scope.article._id, $scope.article)
+					.success($scope._success)
+					.error($scope._error)
+					.finally($scope._notPosting);
+			}
+			else{
+				$http.post('/api/articles', $scope.article)
+					.success($scope._success)
+					.error($scope._error)
+					.finally($scope._notPosting);
+			}
+		};
+
+		$scope._notPosting = function(){
+			$scope.showPosting = false;
+		};
+
+		$scope._error = function(data, status, headers, config){
+			$scope.showError = true;
+			setTimeout(function(){
+				$scope.showError = false;
+			}, 4000);
+		};
+
+		$scope._success = function(article){
+			$scope.article = article;
+			$scope.showSuccess = true;
+			setTimeout(function(){
+				$scope.showSuccess = false;
+			}, 2000);
+		};
 	});
