@@ -14,10 +14,20 @@ var Article = require('./article.model');
 
 // Get list of articles
 exports.index = function(req, res) {
-  Article.find(function (err, articles) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, articles);
-  });
+
+  if(req.query.uid) {
+    Article.findByUserId(req.query.uid, function(err, articles){
+      if(err) { return handleError(res, err); }
+      return res.json(200, articles);
+    });
+  }
+
+  else {
+    Article.find(function (err, articles) {
+      if(err) { return handleError(res, err); }
+      return res.json(200, articles);
+    });
+  }
 };
 
 // Get a single article

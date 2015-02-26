@@ -9,8 +9,17 @@ var ArticleSchema = new Schema({
   active: Boolean,
   gallery: [Schema.Types.ObjectId],
   tags: [Schema.Types.ObjectId],
-  owner: Schema.Types.ObjectId,
+  owner_id: Schema.Types.ObjectId,
   added: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Article', ArticleSchema);
+var Article = mongoose.model('Article', ArticleSchema);
+
+Article.findByUserId = function(userId, cb){
+	return Article.find({
+		owner_id : userId,
+		active: true,
+	}, cb);
+};
+
+module.exports = Article;
