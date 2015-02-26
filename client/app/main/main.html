@@ -16,7 +16,7 @@
 
   <ul id="homenav" ng-show="isLoggedIn()">
     <li>
-      <a ui-sref="items.user({ userId: $scope.getCurrentUser._id.toString() })" class="btn btn-default">
+      <a ui-sref="useritems({ userId: 'me' })" class="btn btn-default">
         My Clothes
       </a>
     </li>

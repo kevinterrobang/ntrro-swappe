@@ -8,28 +8,23 @@ angular.module('swapApp')
         templateUrl: 'app/items/list/list.html',
         controller: 'ItemsCtrl',
       })
-      .state('items.user', {
-        url: '/user/:userId',
+      .state('useritems', {
+        url: '/items/user/:userId',
         templateUrl: 'app/items/list/list.html',
         controller: 'ItemsCtrl',
       })
-      .state('items.detail', {
-        url: '/:articleId',
+      .state('itemdetail', {
+        url: '/items/:articleId',
         templateUrl: 'app/items/view/view.html',
         controller: 'ViewItemCtrl',
-        resolve: {
-          articleId: ['$stateParams', function ($stateParams){
-            return $stateParams.articleId;
-          }]
-        },
       })
-      .state('items.detail.edit', {
-        url: '/edit',
+      .state('edititem', {
+        url: '/items/:articleId/edit',
         templateUrl: 'app/items/edit/edit.html',
         controller: 'EditItemCtrl'
       })
-      .state('items.add', {
-        url: '/add',
+      .state('additem', {
+        url: '/items/add',
         templateUrl: 'app/items/edit/edit.html',
         controller: 'EditItemCtrl'
       });

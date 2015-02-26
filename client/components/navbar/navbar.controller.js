@@ -13,7 +13,7 @@ angular.module('swapApp')
       'link': '/'
     },{
       'title': 'My Clothes',
-      'link': '/items/user/' + Auth.getCurrentUser()._id.toString(),
+      'link': '/items/user/me',
     }];
 
     $scope.logout = function() {

@@ -1,17 +1,31 @@
 'use strict';
 
 angular.module('swapApp')
-  .controller('ItemsCtrl', function ($scope, $http, Auth) {
-    $scope.articles = [];
+  .controller('ItemsCtrl', function ($scope, $http, $stateParams, Auth) {
 
-    $http.get('/api/articles').success(function(articles) {
+    console.log('ItemsCtrl');
+    _.forIn($stateParams, function(value, key){
+      console.log('param: ' + key + ' | ' + value);
+    });
+
+    $scope.articles = [];
+    $scope.user = {};
+    
+    if( $stateParams['userId'] && $stateParams['userId'] != 'me' ){
+      $scope.user = $stateParams['userId'];
+    }
+    else{
+      $scope.user = Auth.getCurrentUser()._id.toString();
+    }
+
+    $http.get('/api/articles?uid='+$scope.user).success(function(articles) {
       $scope.articles = articles;
-      /*$scope.articles = [{title:'Title One',},{title:'Title Two'}];*/
     });
 
     this.ownsArticle = function(article){
-      return article.owner._id.equals(Auth.getCurrentUser._id);
+      return article.owner._id.equals(Auth.getCurrentUser()._id);
     };
+
 /*
     $scope.addArticle = function() {
       if($scope.newArticle === '') {
