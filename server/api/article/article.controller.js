@@ -41,8 +41,8 @@ exports.show = function(req, res) {
 
 // Creates a new article in the DB.
 exports.create = function(req, res) {
-  if(!req.user) { return res.send(401); }
-  req.body.owner = req.user;
+  if(!req.user._id) { return res.send(401); }
+  req.body.owner = req.user._id;
   Article.create(req.body, function(err, article) {
     if(err) { return handleError(res, err); }
     return res.json(201, article);

@@ -11,7 +11,7 @@ angular.module('swapApp')
     $scope.articles = [];
     $scope.user = {};
     
-    if( $stateParams['userId'] && $stateParams['userId'] != 'me' ){
+    if($stateParams['userId'] && $stateParams['userId'] != 'me'){
       $scope.user = $stateParams['userId'];
     }
     else{
