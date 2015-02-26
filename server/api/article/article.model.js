@@ -8,8 +8,8 @@ var ArticleSchema = new Schema({
   info: String,
   active: Boolean,
   gallery: [Schema.Types.ObjectId],
-  tags: [Schema.Types.ObjectId],
-  owner_id: Schema.Types.ObjectId,
+  tags: [{ type: Schema.Types.ObjectId, ref: 'Tag'}],
+  owner: { type: Schema.Types.ObjectId, ref: 'User', turnOn: false },// turnOn auto creates
   added: { type: Date, default: Date.now },
 });
 
