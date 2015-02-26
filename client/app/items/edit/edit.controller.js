@@ -48,6 +48,9 @@ angular.module('swapApp')
 			}
 		};
 
+		// *************************** //
+		// PRIVATE METHODS / CALLBACKS //
+		// *************************** //
 		$scope._notPosting = function(){
 			$scope.showPosting = false;
 		};
