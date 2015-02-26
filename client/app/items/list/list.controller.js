@@ -23,8 +23,10 @@ angular.module('swapApp')
       $scope.articles = articles;
     });
 
-    this.ownsArticle = function(article){
-      return article.owner._id.equals(Auth.getCurrentUser()._id);
+    $scope.ownsArticle = function(article){
+      //console.log('  article owner: ' + article.owner._id.toString());
+      //console.log('auth user owner: ' + Auth.getCurrentUser()._id.toString());
+      return Auth.getCurrentUser().equals(article.owner);
     };
 
 /*
