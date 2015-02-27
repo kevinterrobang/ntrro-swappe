@@ -10,14 +10,20 @@ angular.module('swapApp')
 
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
+      'link': '/',
     },{
       'title': 'Add Item',
-      'link' : '/items/add'
+      'link' : '/items/add',
+      'loggedInOnly' : true,
     },{
       'title': 'My Clothes',
       'link': '/items/user/me',
+      'loggedInOnly' : true,
     }];
+
+    $scope.showItem = function(loggedInOnly){
+      return !loggedInOnly || Auth.isLoggedIn();
+    };
 
     $scope.logout = function() {
       Auth.logout();
