@@ -23,7 +23,7 @@ exports.index = function(req, res) {
   }
 
   else {
-    Article.find().populate('owner').exec(function (err, articles) {
+    Article.find({ active: true }).populate('owner').exec(function (err, articles) {
       if(err) { return handleError(res, err); }
       return res.json(200, articles);
     });

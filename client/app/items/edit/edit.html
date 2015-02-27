@@ -1,6 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
+<div class="container edit article">
 	<p class="alert alert-info" ng-show="showLoading">{{ loadingText }}</p>
 
 	<h1 ng-show="article.name">{{ article.name }}</h1>
@@ -10,12 +10,15 @@
 	<form class="edit-article-form" novalidate ng-hide="showLoading">
 		<input ng-model="article.name" required type="text" placeholder="Title"><br>
 		<textarea ng-model="article.info"></textarea><br>
-		<input type="submit" ng-click="submitArticle()" value="{{ buttonText }}">
+		<input type="submit" ng-click="submitArticle()" value="Save" class="btn btn-success">
 	</form>
 
 	<p class="alert alert-info" ng-show="showPosting">{{ postingText }}</p>
 	<p class="alert alert-success" ng-show="showSuccess">{{ successText }}</p>
 	<p class="alert alert-danger" ng-show="showError">{{ errorText }}</p>
+	<p ng-show="article._id">
+		<a ui-sref="itemdetail({ articleId: article._id.toString() })" class="btn btn-info full-width">View</a>
+	</p>
 </div>
 
 <div ng-include="'components/footer/footer.html'"></div>

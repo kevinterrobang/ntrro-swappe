@@ -4,7 +4,6 @@ angular.module('swapApp')
 	.controller('EditItemCtrl', function ($scope, $http, $stateParams, $timeout, socket) {
 		//console.log('EditItemCtrl');
 		$scope.article = {};
-		$scope.buttonText = 'Add';
 
 		$scope.loadingText = 'Loading...';
 		$scope.showLoading = true;
@@ -21,7 +20,6 @@ angular.module('swapApp')
 		if($stateParams.articleId){
 			$http.get('/api/articles/' + $stateParams.articleId).success(function(article){
 				$scope.article = article;
-				$scope.buttonText = 'Edit';
 				$scope.showLoading = false;
 				//socket.syncUpdates('article', $scope.article);
 				//console.log('syncing updates for: '+$scope.article.name);
@@ -66,7 +64,6 @@ angular.module('swapApp')
 			$timeout(function(){
 				$scope.showSuccess = false;
 			}, 2000);
-			$scope.buttonText = 'Edit';
 			//console.log('received article ID: ' + article._id.toString());
 			//console.log('   scope article ID: ' + $scope.article._id.toString());
 		};

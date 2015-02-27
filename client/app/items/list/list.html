@@ -1,20 +1,20 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
-	<a ui-sref="additem" class="btn btn-default" ng-show="isMe">
+<div class="container article list">
+	<a ui-sref="additem" class="btn btn-primary full-width add" ng-show="isMe">
 		<i class="glyphicon glyphicon-plus"></i>
 		Add Item
 	</a>
 
-	<ul>
+	<ul class="articles">
 		<li ng-show="articles.length == 0">
 			No Articles. Click the add button above to get started with Swappe!
 		</li>
-		<li ng-repeat="article in articles">
+		<li ng-repeat="article in articles" class="article">
 			<a ui-sref="itemdetail({ articleId: article._id.toString() })">{{ article.name }}</a>
 			<a ui-sref="edititem({ articleId: article._id.toString() })"
 				ng-show="ownsArticle(article)"
-				class="btn btn-default">
+				class="btn-sm btn-info edit fr">
 				Edit
 			</a>
 		</li>
