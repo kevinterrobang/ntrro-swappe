@@ -13,12 +13,13 @@
 		<input type="submit" ng-click="submitArticle()" value="Save" class="btn btn-success">
 	</form>
 
-	<p class="alert alert-info" ng-show="showPosting">{{ postingText }}</p>
-	<p class="alert alert-success" ng-show="showSuccess">{{ successText }}</p>
-	<p class="alert alert-danger" ng-show="showError">{{ errorText }}</p>
 	<p ng-show="article._id">
 		<a ui-sref="itemdetail({ articleId: article._id.toString() })" class="btn btn-info full-width">View</a>
 	</p>
+
+	<p class="alert alert-info" ng-show="showPosting">{{ postingText }}</p>
+	<p class="alert alert-success" ng-show="showSuccess">{{ successText }}</p>
+	<p class="alert alert-danger" ng-show="showError">{{ errorText }}</p>
 </div>
 
 <div ng-include="'components/footer/footer.html'"></div>
