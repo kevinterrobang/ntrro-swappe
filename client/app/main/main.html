@@ -1,6 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
+<header class="hero-unit" id="banner" ng-hide="showSearchResults">
   <div class="container">
     <h1>Swappe!</h1>
     <p class="lead">Wear your friends' clothes</p>
@@ -10,19 +10,28 @@
   </div>
 </header>
 
-<div class="container">
+<div class="container main">
 
-  <form id="searchform" action="/search">
-    <input placeholder="Search for clothes in your network">
-  </form>
+  <div ng-show="isLoggedIn()">
+    <a ui-sref="additem" class="btn btn-primary full-width add">
+      Add Clothes
+    </a>
+  </div>
 
-  <ul id="homenav" ng-show="isLoggedIn()">
-    <li>
-      <a ui-sref="additem" class="btn btn-primary">
-        Add Clothes
-      </a>
-    </li>
-  </ul>
+  <div>
+    <form id="searchform" ng-submit="search()">
+      <input placeholder="Search for clothes in your network" ng-model="searchTerms">
+    </form>
+  </div>
+
+  <div ng-show="showSearchResults">
+    <ul id="homenav">
+      <li ng-hide="searchArticles">Nothing matches that criteria...</li>
+      <li ng-repeat="article in searchArticles">
+        <a ui-sref="itemdetail({ articleId: article._id.toString() })">{{ article.name }}</a>
+      </li>
+    </ul>
+  </div>
 
 <!--
   <div class="row">

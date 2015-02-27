@@ -16,11 +16,11 @@ var ArticleSchema = new Schema({
 
 var Article = mongoose.model('Article', ArticleSchema);
 
-Article.findByUserId = function(userId, cb){
+Article.findByUserIdQuery = function(userId){
 	return Article.find({
 		owner : new ObjectId(userId),
 		active: true,
-	}, cb);
+	});
 };
 
 module.exports = Article;

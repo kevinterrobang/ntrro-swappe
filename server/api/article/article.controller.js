@@ -15,19 +15,23 @@ var Article = require('./article.model');
 // Get list of articles
 exports.index = function(req, res) {
 
+  var query;
   if(req.query.uid) {
-    Article.findByUserId(req.query.uid, function(err, articles){
-      if(err) { return handleError(res, err); }
-      return res.json(200, articles);
-    });
+    query = Article.findByUserIdQuery(req.query.uid);
+  }
+
+  else if(req.query.s){
+    query = Article.find({ name: new RegExp(req.query.s, "i") }).populate('owner');
   }
 
   else {
-    Article.find({ active: true }).populate('owner').exec(function (err, articles) {
-      if(err) { return handleError(res, err); }
-      return res.json(200, articles);
-    });
+    query = Article.find({ active: true }).populate('owner');
   }
+
+  query.exec(function(err, articles){
+    if(err) { return handleError(res, err); }
+    return res.json(200, articles);
+  });
 };
 
 // Get a single article

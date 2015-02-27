@@ -1,9 +1,18 @@
 'use strict';
 
 angular.module('swapApp')
-  .controller('MainCtrl', function ($scope, $http, socket, Auth) {
+  .controller('MainCtrl', function ($scope, $http, Auth) {
 
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.showSearchResults = false;
+
+    $scope.search = function(){
+      if(!$scope.searchTerms) return;
+      $http.get('/api/articles?s='+$scope.searchTerms).success(function(articles){
+        $scope.searchArticles = articles;
+        $scope.showSearchResults = true;
+      });
+    };
 /*
     // Currenty, none of this is used...
     // I'm leaving it for reference...
