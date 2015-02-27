@@ -36,13 +36,11 @@ angular.module('swapApp')
 				return;
 			}
 			$scope.showPosting = true;
-			var promise;
-			if($scope.article._id){
-				promise = $http.put('/api/articles/' + $scope.article._id, $scope.article);
-			}
-			else{
-				promise = $http.post('/api/articles', $scope.article);
-			}
+
+			var promise = $scope.article._id ?
+							$http.put('/api/articles/' + $scope.article._id, $scope.article) :
+							$http.post('/api/articles', $scope.article);
+
 			promise.success($scope._success)
 					.error($scope._error)
 					.finally($scope._notPosting);
