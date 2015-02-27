@@ -1,7 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-	<a ui-sref="additem" class="btn btn-default">
+	<a ui-sref="additem" class="btn btn-default" ng-show="isMe">
 		<i class="glyphicon glyphicon-plus"></i>
 		Add Item
 	</a>
