@@ -23,6 +23,8 @@ angular.module('swapApp')
 				$scope.article = article;
 				$scope.buttonText = 'Edit';
 				$scope.showLoading = false;
+				//socket.syncUpdates('article', $scope.article);
+				//console.log('syncing updates for: '+$scope.article.name);
 			});
 		}
 		else{
