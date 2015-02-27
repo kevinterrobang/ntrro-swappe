@@ -1,7 +1,15 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container user detail">
-	USER DETAIL!
+	<h1>{{ user.name }}</h1>
+
+	<h3 ng-show="articles">Clothes</h3>
+	<p ng-hide="articles">No clothes found...</p>
+	<ul>
+		<li ng-repeat="article in articles">
+			<a ui-sref="itemdetail({ articleId: article._id.toString() })">{{ article.name }}</a>
+		</li>
+	</ul>
 </div>
 
 <div ng-include="'components/footer/footer.html'"></div>

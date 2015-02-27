@@ -19,7 +19,7 @@ angular.module('swapApp')
         controller: 'SettingsCtrl',
         authenticate: true
       })
-      .state('viewuser', {
+      .state('userdetail', {
         url: '/user/:userId',
         templateUrl: 'app/account/user/user.html',
         controller: 'UserCtrl',
