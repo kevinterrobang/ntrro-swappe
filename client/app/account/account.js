@@ -18,5 +18,10 @@ angular.module('swapApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('viewuser', {
+        url: '/user/:userId',
+        templateUrl: 'app/account/user/user.html',
+        controller: 'UserCtrl',
       });
   });
