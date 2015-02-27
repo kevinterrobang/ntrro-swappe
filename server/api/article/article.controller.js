@@ -23,7 +23,7 @@ exports.index = function(req, res) {
   }
 
   else {
-    Article.find(function (err, articles) {
+    Article.find().populate('owner').exec(function (err, articles) {
       if(err) { return handleError(res, err); }
       return res.json(200, articles);
     });
@@ -32,7 +32,7 @@ exports.index = function(req, res) {
 
 // Get a single article
 exports.show = function(req, res) {
-  Article.findById(req.params.id, function (err, article) {
+  Article.findById(req.params.id).populate('owner').exec(function (err, article) {
     if(err) { return handleError(res, err); }
     if(!article) { return res.send(404); }
     return res.json(article);
@@ -55,6 +55,8 @@ exports.update = function(req, res) {
   Article.findById(req.params.id, function (err, article) {
     if (err) { return handleError(res, err); }
     if(!article) { return res.send(404); }
+    // TODO: allow for owner changes
+    req.body.owner = article.owner; // retain ownership by ID
     var updated = _.merge(article, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
