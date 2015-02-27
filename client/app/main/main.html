@@ -29,6 +29,7 @@
       <li ng-hide="searchArticles">Nothing matches that criteria...</li>
       <li ng-repeat="article in searchArticles">
         <a ui-sref="itemdetail({ articleId: article._id.toString() })">{{ article.name }}</a>
+        from {{ article.owner.name }}
       </li>
     </ul>
   </div>
