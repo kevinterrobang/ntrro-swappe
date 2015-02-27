@@ -2,7 +2,7 @@
 
 angular.module('swapApp')
 	.controller('EditItemCtrl', function ($scope, $http, $stateParams, $timeout, socket) {
-		console.log('EditItemCtrl');
+		//console.log('EditItemCtrl');
 		$scope.article = {};
 		$scope.buttonText = 'Add';
 
@@ -67,7 +67,7 @@ angular.module('swapApp')
 				$scope.showSuccess = false;
 			}, 2000);
 			$scope.buttonText = 'Edit';
-			console.log('received article ID: ' + article._id.toString());
-			console.log('   scope article ID: ' + $scope.article._id.toString());
+			//console.log('received article ID: ' + article._id.toString());
+			//console.log('   scope article ID: ' + $scope.article._id.toString());
 		};
 	});
