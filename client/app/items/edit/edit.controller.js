@@ -36,18 +36,16 @@ angular.module('swapApp')
 				return;
 			}
 			$scope.showPosting = true;
+			var promise;
 			if($scope.article._id){
-				$http.put('/api/articles/' + $scope.article._id, $scope.article)
-					.success($scope._success)
-					.error($scope._error)
-					.finally($scope._notPosting);
+				promise = $http.put('/api/articles/' + $scope.article._id, $scope.article);
 			}
 			else{
-				$http.post('/api/articles', $scope.article)
-					.success($scope._success)
+				promise = $http.post('/api/articles', $scope.article);
+			}
+			promise.success($scope._success)
 					.error($scope._error)
 					.finally($scope._notPosting);
-			}
 		};
 
 		// *************************** //
