@@ -1,7 +1,9 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-	VIEW PAGE!!
+	<p>{{ article.owner.name }}'s</p>
+	<h1>{{ article.name }}</h1>
+	<p ng-show="article.info">{{ article.info }}</p>
 </div>
 
 <div ng-include="'components/footer/footer.html'"></div>
