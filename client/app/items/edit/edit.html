@@ -4,10 +4,10 @@
 	<p class="alert alert-info" ng-show="showLoading">{{ loadingText }}</p>
 
 	<h1 ng-show="article.name">{{ article.name }}</h1>
-	<h1 ng-show="!article.name && !article._id">New Article!</h1>
+	<h1 ng-show="!article.name && !article._id && !showLoading">New Article!</h1>
 	<h1 ng-show="!article.name && article._id">Editing...</h1>
 
-	<form class="edit-article-form" novalidate>
+	<form class="edit-article-form" novalidate ng-hide="showLoading">
 		<input ng-model="article.name" required type="text" placeholder="Title"><br>
 		<textarea ng-model="article.info"></textarea><br>
 		<input type="submit" ng-click="submitArticle()" value="{{ buttonText }}">
