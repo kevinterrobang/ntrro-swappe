@@ -12,7 +12,7 @@
 		</li>
 		<li ng-repeat="article in articles" class="article">
 			<a ui-sref="itemdetail({ articleId: article._id.toString() })">{{ article.name }}</a>
-			from {{ article.owner.name }}
+			<span ng-show="article.owner.name">from {{ article.owner.name }}</span>
 			<a ui-sref="edititem({ articleId: article._id.toString() })"
 				ng-show="ownsArticle(article)"
 				class="btn-sm btn-info edit fr">
