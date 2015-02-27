@@ -14,6 +14,18 @@ var ArticleSchema = new Schema({
   added: { type: Date, default: Date.now },
 });
 
+/**
+ * Pre-save hook
+ */
+ArticleSchema
+  .pre('save', function(next) {
+
+    if (!this.name)
+      next(new Error('Name is a required field'));
+    else
+      next();
+  });
+
 var Article = mongoose.model('Article', ArticleSchema);
 
 Article.findByUserIdQuery = function(userId){
