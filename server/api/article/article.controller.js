@@ -70,9 +70,10 @@ exports.destroy = function(req, res) {
   Article.findById(req.params.id, function (err, article) {
     if(err) { return handleError(res, err); }
     if(!article) { return res.send(404); }
-    article.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.send(204);
+    article.active = false;
+    article.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, article);
     });
   });
 };
