@@ -19,7 +19,7 @@ angular.module('swapApp')
 		$scope.errorText = 'Error! Not Saved!';
 
 		if($stateParams.articleId){
-			$http.get('/api/articles/' + $stateParams.articleId, function(article){
+			$http.get('/api/articles/' + $stateParams.articleId).success(function(article){
 				$scope.article = article;
 				$scope.buttonText = 'Edit';
 				$scope.showLoading = false;
